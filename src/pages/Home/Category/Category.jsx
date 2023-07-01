@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
 import './Category.css'
 
@@ -17,19 +18,25 @@ const Category = () => {
       {loading ? (
         "loading"
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 ">
           {data &&
             images.map((img,i) => (
-              <div className="pListItem" key={i}>
+              <div className="pListItem shadow-lg p-2 hover:scale-110 " key={i}>
                 <img
                   src={img}
                   alt=""
-                  className="pListImg"
+                  className="pListImg rounded-lg mb-3"
                 />
-                <div className="pListTitles">
-                  <h1 className="font-bold">{data[i]?.type}</h1>
-                  <h2 className="font-medium text-sm">{data[i]?.count} {data[i]?.type}</h2>
+               <div className="flex  items-center justify-between">
+               <div className="pListTitles">
+                  <h1 className="font-bold">{data[i]?.type}s</h1>
+                  <h2 className="font-medium text-sm">{data[i]?.count} {data[i]?.type}s</h2>
                 </div>
+              <Link to={`/apartments/${data[i]?.type}`}>
+              <button className="btn btn-warning btn-xs">View all</button>
+              </Link>
+               </div>
+
               </div>
             ))}
         </div>

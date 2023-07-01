@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
     faBed,
     faCalendarDays,
@@ -18,8 +18,14 @@ import { SearchContext } from "../../../Provider/searchContext";
 
 const SearchHotel = ({type}) => {
     const {user}=useContext(authContext)
+    const [items,setItems]=useState([]);
+    useEffect(()=>{
+      fetch('http://localhost:3000/api/hotels?featured=true')
+      .then(res=>res.json())
+      .then(data=>setItems(data))
+    },[])
     const {dispatch}=useContext(SearchContext)
-    const [destination, setDestination] = useState("");
+    const [destination, setDestination] = useState("Berlin");
   const [openDate, setOpenDate] = useState(false);
   const [dates, setDates] = useState([
     {
@@ -86,13 +92,25 @@ const SearchHotel = ({type}) => {
               <div className="headerSearch bg-gray-500 ">
                 <div className="headerSearchItem ">
                   <FontAwesomeIcon icon={faBed} className="headerIcon" />
-                  <input
-                    type="text"
-                    placeholder="Where are you going?"
-                    className="text-black input input-bordered"
-                    onChange={(e) => setDestination(e.target.value)}
-                  />
+           
+                         <select onChange={(e) => setDestination(e.target.value)} className="input input-bordered w-full text-black" placeholder="Where are you going?">
+                           {
+                            items?.map(item=>
+                              <option
+                              key={item._id}
+                              >{item.city}</option>
+                              
+                              )
+                           }
+
+                    
+                                </select>
+
                 </div>
+            
+
+
+
                 <div className="headerSearchItem ">
                   <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
                   <span 

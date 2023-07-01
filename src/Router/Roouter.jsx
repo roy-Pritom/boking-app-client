@@ -10,6 +10,13 @@ import Hotels from "../pages/Hotels/Hotels";
 import HotelPage from "../pages/HotelPage/HotelPage";
 import BookPage from "../pages/HotelPage/BookPage";
 import Payment from "../pages/Payment/Payment";
+import DashboardLayout from "../layout/DashboardLayout";
+import AllUser from "../Dashboard/AllUser/AllUser";
+import AddHotel from "../Dashboard/AddHotel/AddHotel";
+import BookItem from "../Dashboard/BookItem/BookItem";
+import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
+import PropertyDetails from "../Dashboard/BookItem/PropertyDetails";
+import AllProperty from "../pages/AllProperty/AllProperty";
 
   const router = createBrowserRouter([
     {
@@ -44,9 +51,42 @@ import Payment from "../pages/Payment/Payment";
             path:'/payment/:id/:price',
             element:<Payment></Payment>
         },
+        {
+            path:'/details/:id',
+            element:<PropertyDetails></PropertyDetails>
+        },
+        {
+            path:'/apartments/:type',
+            element:<AllProperty></AllProperty>
+        }
+
   
       ]
     },
+    {
+      path:'dashboard',
+      element:<DashboardLayout></DashboardLayout>,
+      children:[
+        {
+          path:'allUser',
+          element:<AllUser></AllUser>
+        },
+        {
+          path:'addHotel',
+          element:<AddHotel></AddHotel>
+        },
+        // users panel
+        {
+          path:'bookedItem',
+          element:<BookItem></BookItem>
+        },
+        {
+          path:'paymentHistory',
+          element:<PaymentHistory></PaymentHistory>
+        },
+
+      ]
+    }
   ]);
 
   export default router;

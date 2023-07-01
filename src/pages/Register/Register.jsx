@@ -22,20 +22,20 @@ const Register = () => {
             const loggedUser=result.user;
             console.log(loggedUser);
             updateUserProfile(data.name,data.photo)
-            // .then(()=>{
+            .then(()=>{
 
-                // const savedUser = { name: data.name, email: data.email,photoUrl:data.photo }
-                // fetch('https://assignment-12-server-site-sepia.vercel.app/users', {
-                //     method: 'POST',
-                //     headers: {
-                //         'content-type': 'application/json'
-                //     },
-                //     body: JSON.stringify(savedUser)
-                // })
-                // .then(res=>res.json())
-                // .then(data=>console.log(data))
+                const savedUser = {  email: data.email,name: data.name,role:"user" }
+                fetch('http://localhost:3000/api/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(savedUser)
+                })
+                .then(res=>res.json())
+                .then(data=>console.log(data))
 
-            // })
+            })
             
             logOut();
             Swal.fire({

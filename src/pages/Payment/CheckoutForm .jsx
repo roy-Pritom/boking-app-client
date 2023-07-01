@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { authContext } from "../../Provider/AuthProvider";
 // import  './CheckoutForm.css'
 const CheckoutForm = ({item,price }) => {
-    const {name,city,address} = item || {};
+    const {name,city,address,_id} = item || {};
     const [cardError, setCardError] = useState('');
     const { user } = useContext(authContext)
     const [clientSecret, setClientSecret] = useState('');
@@ -86,7 +86,8 @@ const CheckoutForm = ({item,price }) => {
                 transactionId: paymentIntent.id,
                 name,
                 city,
-                address
+                address,
+                propertyId:_id
 
 
 

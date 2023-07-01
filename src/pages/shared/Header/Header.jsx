@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { authContext } from "../../../Provider/AuthProvider";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import useAdmin from "../../../hooks/UseAdmin";
 
 
 const Header = () => {
+  const isAdmin=useAdmin();
   const {user,logOut}=useContext(authContext)
   const handleLogOut = () => {
     logOut()
@@ -20,6 +22,23 @@ const Header = () => {
            <li className="text-white font-bold mr-6 text-lg"><Link>About</Link></li>
            <li className="text-white font-bold mr-6 text-lg"><Link>Blog</Link></li>
            <li className="text-white font-bold mr-6 text-lg"><Link>Contact</Link></li>
+           {
+            user &&
+           <li className="text-white font-bold mr-6 text-lg">
+
+            {
+              isAdmin ?
+            <Link to='/dashboard/allUser'>Dashboard</Link>
+            :
+            <Link to='/dashboard/bookedItem'>Dashboard</Link>
+
+
+
+            }
+            
+            </li>
+
+           }
     </>
 
     return (

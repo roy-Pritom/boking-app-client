@@ -105,7 +105,7 @@ const BookPage = () => {
       </div>
        <div className="flex justify-center">
       <Link to={`/payment/${id}/${price}`}>
-      <button className="btn btn-warning md:w-[71%] w-[254px]">
+      <button className="btn btn-warning  w-[254px]">
           Reserve Now!
         </button>
       </Link>

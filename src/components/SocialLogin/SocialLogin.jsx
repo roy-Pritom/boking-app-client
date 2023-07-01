@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { authContext } from "../../Provider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { authContext } from "../../Provider/AuthProvider";
 
 const SocialLogin = () => {
     const {googleLogin}=useContext(authContext);
@@ -15,18 +15,18 @@ const SocialLogin = () => {
           .then(result=>{
             const loggedUser=result.user;
             console.log(loggedUser);
-            // const saveUser = {name:loggedUser.displayName,email:loggedUser.email,photoUrl:loggedUser.photoURL}
-            //     fetch('https://assignment-12-server-site-sepia.vercel.app/users', {
-            //         method: 'POST',
-            //         headers: {
-            //             'content-type': 'application/json'
-            //         },
-            //         body: JSON.stringify(saveUser)
-            //     })
-            //         .then(res => res.json())
-            //         .then(() => {
+            const saveUser = {email:loggedUser.email,name:loggedUser.displayName,role:"user"}
+                fetch('http://localhost:3000/api/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(() => {
                         
-            //         })
+                    })
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
