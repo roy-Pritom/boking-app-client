@@ -2,8 +2,13 @@
 
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import useFetch from "../../hooks/useFetch";
 
 const AddHotel = () => {
+
+    const { data} = useFetch('http://localhost:3000/api/cities');
+
+
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         fetch('http://localhost:3000/api/hotels', {
@@ -39,7 +44,7 @@ const AddHotel = () => {
                                 <label className="label">
                                     <span className="label-text text-white">PropertyName</span>
                                 </label>
-                                <input type="text" placeholder="Hotel name"  {...register("name", { required: true })} className="input input-bordered " />
+                                <input type="text" placeholder="Property name"  {...register("name", { required: true })} className="input input-bordered " />
                             </div>
                 
                             <div className="form-control">
@@ -58,11 +63,25 @@ const AddHotel = () => {
                             </label>
                         </div>
                             <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text text-white">City</span>
-                                </label>
-                                <input type="text" placeholder="city"  {...register("city", { required: true })} className="input input-bordered " />
-                            </div>
+                            <label className="label">
+                                <span className="label-text text-white">City</span>
+                            </label>
+                            <label className="input-group">
+                                <span>City</span>
+                                <select {...register("city")} className="input input-bordered w-full">
+                                    {
+                                    data?.map(item=>
+                                    <option
+                                    key={item._id}
+                                    value={item?.cityName}>{item?.cityName}</option>
+                                        
+                                        )
+                                    }
+               
+                                </select>
+                            </label>
+                        </div>
+                          
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text text-white">Address</span>

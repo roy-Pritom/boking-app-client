@@ -16,7 +16,10 @@ const Category = () => {
   return (
     <div className="pList">
       {loading ? (
-        "loading"
+        <button className="btn">
+        <span className="loading loading-spinner"></span>
+        loading
+      </button>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4 ">
           {data &&

@@ -8,6 +8,8 @@ import router from './Router/Roouter.jsx';
 import AuthProvider from './Provider/AuthProvider';
 import { SearchContextProvider } from './Provider/searchContext';
 // import AuthProvider from './Provider/AuthProvider';
+import {Provider} from 'react-redux'
+import store from './redux/store'
 
 import {
   QueryClient,
@@ -22,7 +24,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
    <AuthProvider>
   <SearchContextProvider>
   <QueryClientProvider client={queryClient}>
-  <RouterProvider router={router} />
+       <Provider store={store}>
+       <RouterProvider router={router} />
+       </Provider>
   </QueryClientProvider>
   </SearchContextProvider>
    </AuthProvider>

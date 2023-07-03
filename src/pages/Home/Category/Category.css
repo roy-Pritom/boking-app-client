@@ -26,6 +26,7 @@
     display: flex;
     justify-content: center;
     position: relative;
+
   }
   
   .headerContainer {
@@ -41,7 +42,7 @@
   .headerList {
     display: flex;
     gap: 40px;
-    margin-bottom: 50px;
+    /* margin-bottom: 100px; */
   }
   
   .headerListItem {
@@ -61,14 +62,12 @@
   .headerSearch {
     height: 80px;
   
-    border: 3px solid #febb02;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    /* border: 3px solid #febb02; */
+    /* display: flex; */
+  
     padding: 10px 0px;
     border-radius: 5px;
-    /* position: absolute; */
-    /* bottom: 40px; */
+
     width: 100%;
     max-width: 1024px;
   }
@@ -81,6 +80,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+ 
   }
   
   .headerSearchInput {
@@ -89,7 +89,7 @@
   }
   
   .headerSearchText {
-    color: lightgray;
+    color: black;
     cursor: pointer;
   }
   
