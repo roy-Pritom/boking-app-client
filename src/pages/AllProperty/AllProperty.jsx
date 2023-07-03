@@ -1,8 +1,8 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faLocationDot,
+    faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 
 const AllProperty = () => {
@@ -34,7 +34,10 @@ const AllProperty = () => {
                                         <p className="text-sm font-medium text-green-600">{item?.title}</p>
                                         <p >  <FontAwesomeIcon icon={faLocationDot} /><span className="ml-2 text-sm">{item?.city}, {item?.address}</span></p>
                                         <p className="text-yellow-600 font-medium text-sm">${item?.cheapestPrice}</p>
-                                 
+                                        <Link to={`/hotel/${item._id}`}>
+
+                                            <button className="btn btn-warning mt-2 btn-sm w-[120px]">Book Now</button></Link>
+
                                     </div>
                                 </div>
                             )

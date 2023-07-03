@@ -17,6 +17,7 @@ import BookItem from "../Dashboard/BookItem/BookItem";
 import PaymentHistory from "../Dashboard/PaymentHistory/PaymentHistory";
 import PropertyDetails from "../Dashboard/BookItem/PropertyDetails";
 import AllProperty from "../pages/AllProperty/AllProperty";
+import PrivateRoute from "./PrivateRoute";
 
   const router = createBrowserRouter([
     {
@@ -45,11 +46,11 @@ import AllProperty from "../pages/AllProperty/AllProperty";
         },
         {
             path:'/book/:id/:price',
-            element:<BookPage></BookPage>
+            element:<PrivateRoute><BookPage></BookPage></PrivateRoute>
         },
         {
             path:'/payment/:id/:price',
-            element:<Payment></Payment>
+            element:<PrivateRoute><Payment></Payment></PrivateRoute>
         },
         {
             path:'/details/:id',
